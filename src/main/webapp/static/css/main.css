@@ -1,0 +1,350 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:400,400italic,700&subset=cyrillic,latin);
+
+#logo {
+    display: inline-block;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 64px;
+    margin: 0 32px;
+}
+
+
+.comm {
+    background: rgba(255, 255, 255, 0.75);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    margin: 32px 32px 0;
+    height: 120px;
+    width: calc(100% - 64px);
+}
+
+label {
+	
+	color: rgba(0, 0, 0, 0.25);
+	font-size: 14px;
+	font-weight: bold;
+	padding: 8px;
+}
+
+.comment {
+    background: rgba(255, 255, 255, 0.75);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    margin: 32px 32px 0;
+    width: calc(100% - 64px);
+}
+
+.comment .info {
+    background: rgba(0, 0, 0, 0.05);
+    color: rgba(0, 0, 0, 0.25);
+    font-size: 12px;
+    font-weight: bold;
+    padding: 8px;
+}
+
+.comment .text {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px;
+}
+
+.comments {
+    background: rgba(0, 0, 0, 0.05);
+    margin: 32px 0 0;
+}
+
+.comments .more {
+    margin-top: 32px;
+}
+
+.image {
+    background: rgba(255, 255, 255, 0.75);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+    display: block;
+    margin: 32px auto 0;
+    max-height: 600px;
+    max-width: 600px;
+    padding: 8px;
+}
+
+a {
+    color: inherit;
+    outline: 0;
+    text-decoration: none;
+    transition: 0.25s;
+}
+
+a.more {
+    background: rgba(0, 0, 0, 0.05);
+    color: rgba(0, 0, 0, 0.25);
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 16px;
+    text-align: center;
+}
+
+a.more:focus, a.more:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.75)
+}
+
+article {
+    display: inline-block;
+    margin: 32px;
+    width: 300px;
+}
+
+div.existPost {
+    display: inline-block;
+    margin: 32px;
+    width: 300px;
+    font-size: 18px;
+}
+
+
+article a {
+    display: block;
+    position: relative;
+}
+
+article a:hover .open {
+    opacity: 1;
+}
+
+article a .open {
+    align-items: center;
+    background: rgba(255, 255, 255, 0.25);
+    display: flex;
+    font-size: 24px;
+    font-weight: bold;
+    height: calc(100%);
+    justify-content: space-around;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.75);
+    top: 0;
+    transition: 0.25s;
+    width: calc(100%);
+}
+
+article img {
+    background: rgba(255, 255, 255, 0.75);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+    padding: 8px;
+    max-width: 284px;
+    max-height: 500px;
+}
+
+body {
+    background: rgba(50, 100, 100, 1);
+    color: rgba(0, 0, 0, 0.75);
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 0;
+    margin: 0;
+}
+
+div.btns {
+    position: relative;
+}
+
+
+
+div.btns a {
+    /*box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);*/
+    color: rgba(255, 255, 255, 0.9);
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 16px 15px 0 0;
+    padding: 8px 0;
+    text-align: center;
+}
+
+div.btns a.info {
+    color: inherit;
+    outline: 0;
+    text-decoration: none;
+    transition: 0.25s;
+}
+
+div.btns a:last-child {
+    margin: 16px 0 0;
+}
+
+div.btns a.rate {
+    background: rgba(50, 125, 75, 1);
+    width: 100px;
+}
+
+div.btns a.rate:focus, div.btns a.rate:hover {
+    background: rgba(25, 100, 50, 1);
+}
+
+div.btns a.open {
+    background: rgba(75, 75, 100, 1);
+    width: 100px;
+}
+
+div.btns a.open:focus, div.btns a.open:hover {
+    background: rgba(50, 50, 75, 1);
+}
+
+div.btns a.ban {
+    background: rgba(125, 50, 50, 1);
+    width: 50px;
+}
+
+div.btns a.ban:focus, div.btns a.ban:hover {
+    background: rgba(100, 25, 25, 1);
+}
+
+div.masscontainer {
+	padding: 0px, 64px, 64px, 64px;
+}
+
+div.container {
+    padding: 32px;
+}
+
+.btns div.info {
+    background: rgba(255, 255, 255, 0.75);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px 0;
+    /*margin: 0 16px 0 0;*/
+    text-align: center;
+    width: 51px;
+}
+
+div.description {
+	  background: rgba(255, 255, 255, 0.75);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px 0;
+    margin: 12px 0 0 0;
+    text-align: center;
+    width: 728px;
+}
+
+.btn div.info {
+    background: rgba(255, 255, 255, 0.75);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px 0;
+    /*margin: 0 16px 0 0;*/
+    text-align: center;
+    width: 300px;
+}
+
+.btns div.info img {
+    background: transparent;
+    box-shadow: none;
+    opacity: 0.25;
+    padding: 0;
+    vertical-align: top;
+    width: 16px;
+}
+
+div.menu {
+    line-height: 64px;
+    right: 0;
+    position: absolute;
+    top: 0;
+}
+
+div.menu a {
+    color: rgba(255, 255, 255, 0.5);
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 32px;
+}
+
+div.menu a:hover, div.menu a.selected {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+div.selector {
+    background: rgba(0, 0, 0, 0.05);
+    font-weight: bold;
+    text-align: center;
+}
+
+div.pageCounter {
+    background: rgba(0, 0, 0, 0.05);
+    font-weight: bold;
+    text-align: center;
+    margin: 3px 0 0 0;
+}
+
+div.pageCounter div {
+	color: rgba(0, 0, 0, 0.25);
+    display: inline-block;
+    font-size: 16px;
+    margin: 0 32px;
+    padding: 16px 0;
+}
+
+div.selector a {
+    color: rgba(0, 0, 0, 0.25);
+    display: inline-block;
+    font-size: 16px;
+    margin: 0 32px;
+    padding: 16px 0;
+}
+
+div.selector a:hover, div.selector a.selected {
+    color: rgba(0, 0, 0, 0.75);
+}
+
+div.selector span {
+    color: rgba(0, 0, 0, 0.25);
+    font-size: 16px;
+}
+
+footer {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 16px;
+    padding: 0 32px 32px;
+    text-align: center;
+}
+
+header {
+    background: rgba(125, 50, 75, 1);
+    box-shadow: 0px 4px 0 rgba(0, 0, 0, 0.25);
+    height: 64px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+img {
+    vertical-align: bottom;
+}
+
+textarea {
+	width: calc(100% - 14px);
+	margin-right: 4px;
+}
+
+
+main {
+    background: rgba(255, 255, 255, 0.75);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.25);
+    margin: 60px auto 32px;
+    padding-top: 4px;
+    width: 792px;
+}

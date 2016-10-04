@@ -1,0 +1,29 @@
+
+div#contact {
+    width: 444px;
+    margin: 0 auto;
+}
+
+div#top {
+    background: url(../img/top.jpg);
+    height: 64px;
+}
+
+div#top h1 {
+    font-family: Verdana, Arial;
+    font-size: 22px;
+    font-weight: normal;
+    padding: 20px 0 0 20px;
+    color: #fff;
+}
+
+div#center {
+    background: url(../img/center.jpg);
+    padding: 5px 15px 5px 25px;
+}
+
+div#bot {
+    background: url(../img/bot.jpg);
+    height: 13px;
+}
+
