@@ -43,7 +43,7 @@
         	<div class="btn">
             	<div class="info">Description: ${post.description}.</div>
             </div>>
-            <a href="<c:url value='/post-id-${post.id}' />"><img alt="" src="static/dat/${post.name}"></a>
+            <a href="<c:url value='/post-id-${post.id}' />"><img alt="" src="/OverBump/imageController/imageDisplay?id=${post.id}"></a>
             <div class="btns">
                 <a href="<c:url value='/post-id-${post.id}' />"><div class="info"><img alt="" src="static/img/bump2.png"> ${post.bumps}</div></a>
                 <a href="<c:url value='/post-id-${post.id}' />"><div class="info"><img alt="" src="static/img/eye.png"> ${post.views}</div></a>

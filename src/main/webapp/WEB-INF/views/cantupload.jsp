@@ -25,14 +25,18 @@
 
 
 <main>
+		
 
+	<c:forEach items="${samePosts}" var="post">
 		<article>
-            <img alt="" src="static/dat/${existPost.name}">
+            <img alt="" src="/OverBump/imageController/imageDisplay?id=${post.id}">
         </article>
+    </c:forEach>
+		
 		<div class="existPost">
             This  image was alredy uploaded by enather user. Please do not copy-paste existing posts.
         </div>
-        <a class="more" href="post-id-${existPost.id}">To existing post</a>
+        <a class="more" href="post-id-${post.id}">To existing post</a>
         <a class="more" href="upload">Back to upload page</a>
 </main>
 

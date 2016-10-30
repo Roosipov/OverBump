@@ -49,6 +49,9 @@ public class Post {
 
 	@Column(name = "city", length = 100, nullable = false)
 	private String city;
+	
+	@Column(name = "bitChain", length = 64, nullable = false)
+	private String bitChain;
 
 	public String getCountry() {
 		return country;
@@ -188,8 +191,16 @@ public class Post {
 	public String toString() {
 		return "Post [id=" + id + ", name=" + name + ", content=" + Arrays.toString(content) + ", views=" + views
 				+ ", description=" + description + ", type=" + type + ", country=" + country + ", city=" + city
-				+ ", comments=" + comments + ", bumps=" + bumps + ", sage=" + sage + ", joiningDate=" + joiningDate
-				+ "]";
+				+ ", bitChain=" + bitChain + ", comments=" + comments + ", bumps=" + bumps + ", sage=" + sage
+				+ ", joiningDate=" + joiningDate + "]";
+	}
+
+	public String getBitChain() {
+		return bitChain;
+	}
+
+	public void setBitChain(String bitChain) {
+		this.bitChain = bitChain;
 	}
 
 }

@@ -2,9 +2,15 @@ package com.websystique.springmvc.service;
 
 import java.util.List;
 
+import javax.imageio.ImageIO;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import java.awt.image.*;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 import com.websystique.springmvc.dao.CommDao;
 import com.websystique.springmvc.dao.MessDao;
@@ -13,6 +19,7 @@ import com.websystique.springmvc.model.User;
 import com.websystique.springmvc.model.Comment;
 import com.websystique.springmvc.model.Message;
 import com.websystique.springmvc.model.Post;
+import com.websystique.springmvc.controller.ImageProcessing;
 
 @Service("service")
 @Transactional
@@ -73,6 +80,28 @@ public class ServiceImpl implements Services {
 		}
 	}
 
+	public void setBitChain(Post post) {
+		
+		InputStream in = new ByteArrayInputStream(post.getContent());
+		try {
+			BufferedImage bImage = ImageIO.read(in);
+			post.equals(post);
+			Post entity = dao.findById(post.getId());
+			bImage = ImageProcessing.scale(bImage, 8, 8);
+			int avrColor = ImageProcessing.averageColor(bImage);
+			if (entity != null) {
+				entity.setBitChain(ImageProcessing.bitChain(bImage, avrColor));
+			}
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+	}
+	
 	public void sage(Post post) {
 		int b = post.getSage();
 		post.equals(post);

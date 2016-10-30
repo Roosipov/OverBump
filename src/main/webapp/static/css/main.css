@@ -101,6 +101,7 @@ div.existPost {
     margin: 32px;
     width: 300px;
     font-size: 18px;
+    position: absolute;
 }
 
 

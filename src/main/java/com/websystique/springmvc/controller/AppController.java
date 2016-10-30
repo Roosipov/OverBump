@@ -1,22 +1,20 @@
 package com.websystique.springmvc.controller;
 
-import java.io.BufferedOutputStream;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.text.SimpleDateFormat;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import javax.imageio.ImageIO;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.validation.Valid;
 
-import org.joda.time.DateTime;
-import org.joda.time.LocalDateTime;
 import org.jsoup.Jsoup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -38,7 +36,6 @@ import com.websystique.springmvc.service.Services;
 import com.websystique.springmvc.util.FileValidator;
 import com.websystique.springmvc.model.Post;
 import com.websystique.springmvc.model.ServerLocation;
-import com.websystique.springmvc.model.User;
 //import com.websystique.springmvc.model.UserDocument;
 import com.websystique.springmvc.model.Message;
 
@@ -69,14 +66,18 @@ public class AppController {
 
 	/**
 	 * This method will list all existing posts.
+	 * @throws IOException 
 	 */
-	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
-	public String listPosts(ModelMap model) {
+	@RequestMapping(value = { "/Overbump", "/", "/home" }, method = RequestMethod.GET)
+	public String listPosts(ModelMap model) throws IOException {
+		
 		List<Post> posts = service.allPosts(postsAmount);
 		model.addAttribute("posts", posts);
 		model.addAttribute("amount", postsAmount);
 		return "home";
 	}
+	
+
 
 	/**
 	 * This method will list all existing posts.
@@ -170,6 +171,8 @@ public class AppController {
 		return "upload";
 	}
 
+	// add comparing by bitChain to avoid duplicates
+	
 	@RequestMapping(value = { "/upload" }, method = RequestMethod.POST)
 	public String uploadPost(@Valid FileBucket fileBucket, BindingResult result, ModelMap model) throws IOException {
 
@@ -177,6 +180,12 @@ public class AppController {
 		model.addAttribute("posts", posts);
 		Post post = new Post();
 		model.addAttribute("post", post);
+		
+		
+		
+		//String bitChain = post.getBitChain();
+		
+		
 		// if (result.hasErrors()) {
 		// System.out.println("validation errors");
 
@@ -189,41 +198,76 @@ public class AppController {
 			result.addError(desError);
 			return "upload";
 		}
+		
+		
 
 		MultipartFile multipartFile = fileBucket.getFile();
 		Boolean check = false;
-		int id = 0;
+		int number = 0;
+		int avrColor;
+		String bitChain;
+		List<Integer> numbers= new ArrayList<Integer>();
+		
+		InputStream in = new ByteArrayInputStream(multipartFile.getBytes());
+		BufferedImage bImage = ImageIO.read(in);
+		ImageProcessing.scale(bImage, 8, 8);
+		avrColor = ImageProcessing.averageColor(bImage);
+		bitChain = ImageProcessing.bitChain(bImage, avrColor);
+		List<Post> samePosts = new ArrayList<Post>();
 
 		for (Post p : posts) {
 			// System.out.print(Arrays.equals(post.getContent(),
 			// post.getContent()));
 			// System.out.print(Arrays.equals(p.getContent(),
 			// post.getContent()));
-			if (Arrays.equals(p.getContent(), multipartFile.getBytes())) {
+			
+			if(ImageProcessing.getHammingDistance(p.getBitChain(), bitChain) <= 10)
+			{
 				check = true;
-				id = p.getId();
-				break;
+				//numbers.add(p.getId());
+				samePosts.add(p);
 			}
+				
+			
+			/*if (Arrays.equals(p.getContent(), multipartFile.getBytes())) {
+				check = true;
+				number = p.getId();
+				break;
+			}*/
 		}
 
 		if (check == true) {
-			Post existPost = service.findById(id);
-			model.addAttribute("existPost", existPost);
+			
+			//for (int i = 0; i <= numbers.size(); i++)
+			//{
+			//	samePosts.add(service.findById(numbers.get(i)));
+			//}
+			model.addAttribute("samePosts", samePosts);
+			
+			//post = service.findById(number);
+			//model.addAttribute("post", post);
 			// model.addAttribute("success", "such image has already been
 			// uploaded");
 			return "cantupload";
 		} else {
 			saveFile(fileBucket, post, multipartFile);
-
-			String name = post.getName();
-			try (OutputStream out = new BufferedOutputStream(new FileOutputStream(
-					new File("/etc/apache-tomcat-7.0.67/webapps/Spring4MVCFileUploadDownloadWithHibernate/static/dat/"
-							+ name)))) {
-				out.write(fileBucket.getFile().getBytes());
-			}
+			
+			
+			service.setBitChain(post);
+			
+			// imageProcessing adding bitChain after file saving using services update Post.bitChain
+			
+			//String name = post.getName();
+			//try (OutputStream out = new BufferedOutputStream(new FileOutputStream(
+			//		new File("/etc/apache-tomcat-7.0.67/webapps/Overbump/static/dat/"
+			//				+ name)))) {
+			//	out.write(fileBucket.getFile().getBytes());
+			//}
 			return "redirect:/upload";
 		}
 	}
+	
+
 
 	/**
 	 * feedback
@@ -313,6 +357,7 @@ public class AppController {
 		ServerLocation location = obj.getLocation("31.148.31.0");
 		post.setCity(location.getCity());
 		post.setCountry(location.getCountryName());
+		post.setBitChain("");
 		service.savePost(post);
 	}
 

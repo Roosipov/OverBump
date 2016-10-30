@@ -36,6 +36,8 @@ public interface Services {
 	Message findMessById(int id);
 
 	void sage(Post post);
+	
+	void setBitChain (Post post) ;
 
 	void viewup(Post post);
 

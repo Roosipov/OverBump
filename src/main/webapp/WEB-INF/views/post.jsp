@@ -29,8 +29,7 @@
 
 <main>
 	<a name="up"></a>
-	<img alt="" class="image" src="${pageContext.request.contextPath}/images/${post.name}">
-   <!--  <img alt="" class="image" src="static/dat/${post.name}"> -->
+   <img class="image" src="/OverBump/imageController/imageDisplay?id=${post.id}"/>
 
     <div class="btns" style="text-align: center;">
     	<div class="description">${post.description}.</div>
