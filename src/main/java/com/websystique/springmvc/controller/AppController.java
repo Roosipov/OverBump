@@ -40,7 +40,7 @@ import com.websystique.springmvc.model.ServerLocation;
 import com.websystique.springmvc.model.Message;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/123")
 public class AppController {
 
 	@Autowired
@@ -68,32 +68,33 @@ public class AppController {
 	 * This method will list all existing posts.
 	 * @throws IOException 
 	 */
-	@RequestMapping(value = { "/Overbump", "/", "/home" }, method = RequestMethod.GET)
+	/*@RequestMapping(value = { "/Overbump", "/", "/home" }, method = RequestMethod.GET)
 	public String listPosts(ModelMap model) throws IOException {
 		
 		List<Post> posts = service.allPosts(postsAmount);
 		model.addAttribute("posts", posts);
 		model.addAttribute("amount", postsAmount);
 		return "home";
-	}
+	} */
 	
 
 
 	/**
 	 * This method will list all existing posts.
 	 */
-	@RequestMapping(value = { "/home-showMore-{amount}" }, method = RequestMethod.GET)
+	/*
 	public String morePosts(ModelMap model, @PathVariable int amount) {
 		amount += 4;
 		List<Post> posts = service.allPosts(amount);
 		model.addAttribute("amount", amount);
 		model.addAttribute("posts", posts);
 		return "home";
-	}
+	} */
 
 	/**
 	 * This method will list TOP posts.
 	 */
+	/*
 	@RequestMapping(value = { "/home-top" }, method = RequestMethod.GET)
 	public String topPosts(ModelMap model) {
 
@@ -109,7 +110,7 @@ public class AppController {
 		model.addAttribute("posts", posts);
 		return "home";
 	}
-
+	*/
 	/**
 	 * This method will show post page
 	 */
@@ -353,8 +354,8 @@ public class AppController {
 		java.util.Date dateValue = new java.util.Date();
 		// DateTime dateTime = new DateTime();
 		post.setJoiningDate(dateValue);
-		LocationController obj = new LocationController();
-		ServerLocation location = obj.getLocation("31.148.31.0");
+		LocationController loc = new LocationController();
+		ServerLocation location = loc.getLocation("31.148.31.0");
 		post.setCity(location.getCity());
 		post.setCountry(location.getCountryName());
 		post.setBitChain("");

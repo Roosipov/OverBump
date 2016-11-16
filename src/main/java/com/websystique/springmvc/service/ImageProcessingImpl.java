@@ -1,23 +1,15 @@
-package com.websystique.springmvc.controller;
+package com.websystique.springmvc.service;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.Transparency;
 import java.awt.color.ColorSpace;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorConvertOp;
-import java.io.File;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
-import javax.imageio.ImageReadParam;
-
-public class ImageProcessing {
+public class ImageProcessingImpl implements ImageProcessingSevice {
 	
-	// changing the image size and making grayscale
-	
-	 public static BufferedImage scale(BufferedImage img, int targetWidth, int targetHeight) throws IOException {
+	public BufferedImage scale(BufferedImage img, int targetWidth, int targetHeight) {
 
 	    int type = BufferedImage.TYPE_INT_RGB;
 	    BufferedImage ret = img;
@@ -79,14 +71,12 @@ public class ImageProcessing {
 	 
 	 // finding average image color
 	 
-	 public static int averageColor(BufferedImage bi) {
-		    int sumr = 0, sumg = 0, sumb = 0;
+	 public int averageColor(BufferedImage bi) {
+		    int sumr = 0;
 		    for (int x = 0; x < 8; x++) {
 		        for (int y = 0; y < 8; y++) {
 		            Color pixel = new Color(bi.getRGB(x, y));
 		            sumr += pixel.getRed();
-		            sumg += pixel.getGreen();
-		            sumb += pixel.getBlue();
 		        }
 		    }
 		    int num = 64;
@@ -98,9 +88,9 @@ public class ImageProcessing {
 	 
 	 
 	 
-	 public static String bitChain(BufferedImage bi, int avrColor) {
+	 public String bitChain(BufferedImage bi) {
 		 	String s = "";
-		 	//int averageC = averageColor(bi);
+		 	int avrColor = averageColor(bi);
 		    for (int x = 0; x < 8; x++) {
 		        for (int y = 0; y < 8; y++) {
 		            Color pixel = new Color(bi.getRGB(x, y));
@@ -118,7 +108,7 @@ public class ImageProcessing {
 		}
 	 
 
-	 public static int getHammingDistance(String sequence1, String sequence2) {
+	 public int getHammingDistance(String sequence1, String sequence2) {
 		    char[] s1 = sequence1.toCharArray();
 		    char[] s2 = sequence2.toCharArray();
 
@@ -134,24 +124,5 @@ public class ImageProcessing {
 
 		    return result;
 		}
-	
-/*
-	public static void main(String[] args) throws IOException {
 
-		
-		BufferedImage i = ImageProcessing.scale("/home/rosipov/Desktop/diploma/dat/111.jpg", 8, 8);
-		ImageIO.write(i, "jpg",new File("/home/rosipov/Desktop/diploma/dat/image") );
-		//BufferedImage i64 = ImageIO.read(new File("/home/rosipov/Desktop/diploma/dat/image.jpg"));
-		
-		System.out.println(averageColor(i));
-		System.out.print(bitChain(i, averageColor(i)));
-		//File outputfile = new File("/home/rosipov/Desktop/diploma/dat/image.jpg");
-		//ImageIO.write(i, "jpg", outputfile);
-		
-		
-		
-
-	}
-*/
-	 
 }

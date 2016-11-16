@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.websystique.springmvc</groupId>
-  <artifactId>Spring4MVCFileUploadDownloadWithHibernate</artifactId>
+  <artifactId>OverBump</artifactId>
   <packaging>war</packaging>
   <version>1.0.0</version>
-  <name>Spring4MVCFileUploadDownloadWithHibernate Maven Webapp</name>
+  <name>OverBump Maven Webapp</name>
   <url>http://maven.apache.org</url>
   
   
@@ -145,7 +145,7 @@
 						<source>1.7</source>
           				<target>1.7</target>
 						<warSourceDirectory>src/main/webapp</warSourceDirectory>
-						<warName>Spring4MVCFileUploadDownloadWithHibernate</warName>
+						<warName>OverBump</warName>
 						<failOnMissingWebXml>false</failOnMissingWebXml>
 					</configuration>
 			    </plugin>
@@ -155,7 +155,7 @@
 					<version>2.4</version>
 					<configuration>
 						<warSourceDirectory>src/main/webapp</warSourceDirectory>
-						<warName>Spring4MVCFileUploadDownloadWithHibernate</warName>
+						<warName>OverBump</warName>
 						<failOnMissingWebXml>false</failOnMissingWebXml>
 					</configuration>
 				</plugin>
@@ -163,6 +163,6 @@
 				
 			</plugins>
 		</pluginManagement>
-		<finalName>Spring4MVCFileUploadDownloadWithHibernate</finalName>
+		<finalName>OverBump</finalName>
 	</build>
 </project>
